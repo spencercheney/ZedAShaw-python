@@ -1,7 +1,7 @@
 import web
 
 urls = (
-    '/', 'Index'
+    '/hello', 'Index'
 )
 
 app = web.application(urls, globals())
@@ -10,7 +10,11 @@ render = web.template.render('/home/spencercheney/Documents/PythonPractice/ZedAS
 
 class Index(object):
     def GET(self):
-        greeting = "Hello World"
+        return render.hello_form()
+
+    def POST(self):
+        form = web.input(name="Stranger", greet="Hello")
+        greeting = "%s, %s" %(form.greet, form.name)
         return render.index(greeting = greeting)
 
 if __name__ == "__main__":
