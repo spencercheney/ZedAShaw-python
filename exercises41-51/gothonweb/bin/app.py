@@ -6,7 +6,7 @@ urls = (
 
 app = web.application(urls, globals())
 
-render = web.template.render('/home/spencercheney/Documents/PythonPractice/ZedAShaw-python/exercises41-51/gothonweb/templates/')
+render = web.template.render('/home/spencercheney/Documents/PythonPractice/ZedAShaw-python/exercises41-51/gothonweb/templates/', base="layout")
 
 class Index(object):
     def GET(self):
