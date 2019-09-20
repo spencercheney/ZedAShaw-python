@@ -9,8 +9,6 @@ urls = (
 )
 
 app = web.application(urls, globals())
-# store = web.session.DiskStore('sessions')
-# session = web.session.Session(app, store, initializer={'room': None})
 
 #little hack so that debug mode works with sessions
 if web.config.get('_session') is None:
@@ -21,7 +19,7 @@ if web.config.get('_session') is None:
 else:
     session = web.config._session
 
-render = web.template.render('templates/', base="layout")
+render = web.template.render('/home/spencercheney/Documents/PythonPractice/ZedAShaw-python/gothonweb/templates/', base="layout")
 
 class Index(object):
     def GET(self):
