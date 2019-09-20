@@ -29,7 +29,7 @@ Armory and about to pull a weapon to blass you.
 
 laser_weapon_armory = Room("Laser Weapon Armory", 
 """
-Lucky for you they made you learn Gothon insults in the academ.
+Lucky for you they made you learn Gothon insults in the academy.
 You tell the one Gothon joke you know:
 Lbhe zbgure vf fb sng, jura fur fvgf nebhaq gur ubhfr, fur fvgf nebhaq gur ubhfr.
 The Gothon stops, tries not to laugh, then busts out laughing so hard he can't move.
