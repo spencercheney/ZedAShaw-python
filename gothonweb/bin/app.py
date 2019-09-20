@@ -1,29 +1,33 @@
 import web
 from gothonweb import map
 
+# web.config.debug = False
+
 urls = (
-    '/game', 'GameEngine'
+    '/game', 'GameEngine',
     '/', 'Index'
 )
 
 app = web.application(urls, globals())
+# store = web.session.DiskStore('sessions')
+# session = web.session.Session(app, store, initializer={'room': None})
 
 #little hack so that debug mode works with sessions
 if web.config.get('_session') is None:
-    store = web.session.DiskStore('session')
-    session = web.session.Session(app, store,
-                                  initializer={'room': None})
+    store = web.session.DiskStore('sessions')
+    session = web.session.Session(app, store, initializer={'room': None})
 
     web.config._session = session
 else:
     session = web.config._session
 
-render = web.template.render('/home/spencercheney/Documents/PythonPractice/ZedAShaw-python/exercises41-51/gothonweb/templates/', base="layout")
+render = web.template.render('templates/', base="layout")
 
 class Index(object):
     def GET(self):
         #this is used to "setup" the session with starting values
         session.room = map.START
+        # return str(session.room.name)
         web.seeother("/game")
 
 
