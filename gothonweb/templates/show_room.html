@@ -8,6 +8,12 @@ $room.description
 
 $if room.name == "death":
     <p><a href="/">Play Again?</a></p>
+
+$if room.gothons:   
+    <p><a href="/blaster">Blaster</a> &nbsp; &nbsp; &nbsp; &nbsp; <a href="/knive">Knive</a>  &nbsp; &nbsp; &nbsp; &nbsp; <a href="/dodge">Dodge</a></p>
+
+$if room.name == "Laser Weapon Armory":
+    <p>$room.actions <br> <a href="/left">Left</a>  &nbsp; &nbsp; &nbsp; &nbsp; <a href="right">Right</a></p>
 $else:
     <p> 
     <form action="/game" method="POST">

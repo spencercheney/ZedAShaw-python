@@ -1,11 +1,17 @@
 import web
 from gothonweb import map
+from gothonweb import action
 
 # web.config.debug = False
 
 urls = (
     '/game', 'GameEngine',
-    '/', 'Index'
+    '/', 'Index',
+    '/blaster', 'Blaster',
+    '/knive', 'Knive',
+    '/dodge', 'Dodge',
+    '/left', 'Left',
+    '/right', 'Right'
 )
 
 app = web.application(urls, globals())
@@ -45,6 +51,47 @@ class GameEngine(object):
         if session.room and form.action:
             session.room = session.room.go(form.action)
 
+        web.seeother("/game")
+
+class Blaster(object):
+    def GET(self):
+        if action.FIGHT.Blaster():
+            if session.room.move_on():
+                session.room = session.room.next
+        else:
+            session.room = map.DEATH
+        web.seeother("/game")
+
+class Knive(object):
+    def GET(self):
+        if action.FIGHT.Knive():
+            if session.room.move_on():
+                session.room = session.room.next
+        else:
+            session.room = map.DEATH
+        web.seeother("/game")
+
+class Dodge(object):
+    def GET(self):
+        if action.FIGHT.Dodge():
+            if session.room.move_on():
+                session.room = session.room.next
+        else:
+            session.room = map.DEATH
+        web.seeother("/game")
+
+class Left(object):
+    def GET(self):
+        session.room.add_action("L")
+        if session.room.move_on():
+                session.room = session.room.next
+        web.seeother("/game")
+
+class Right(object):
+    def GET(self):
+        session.room.add_action("R")
+        if session.room.move_on():
+                session.room = session.room.next
         web.seeother("/game")
 
 if __name__ == "__main__":
