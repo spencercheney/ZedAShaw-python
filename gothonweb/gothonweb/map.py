@@ -60,6 +60,11 @@ interference. You get to the chamber with the escape pods, and
 now need to pick one to take. Some of them could be damaged
 but you don't have time to look. There's 5 pods, which one
 do you take?
+
+     /\\            /           /\\         /\\            /\\        
+    |  |           |  |        |  |        |              |  |    
+   /____\\        /____\\      ____\\     /____\\        /____ 
+
 """, 0, the_end_winner)
 
 

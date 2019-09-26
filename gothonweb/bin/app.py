@@ -11,7 +11,9 @@ urls = (
     '/knive', 'Knive',
     '/dodge', 'Dodge',
     '/left', 'Left',
-    '/right', 'Right'
+    '/right', 'Right',
+    '/one', 'One',
+    '/not_one', 'Not_One'
 )
 
 app = web.application(urls, globals())
@@ -43,15 +45,6 @@ class GameEngine(object):
         else:
             #why is this here? do you need it
             return render.you_died()
-
-    def POST(self):
-        form = web.input(action=None)
-
-        #there is a bug here, can you fix it?
-        if session.room and form.action:
-            session.room = session.room.go(form.action)
-
-        web.seeother("/game")
 
 class Blaster(object):
     def GET(self):
@@ -92,6 +85,16 @@ class Right(object):
         session.room.add_action("R")
         if session.room.move_on():
                 session.room = session.room.next
+        web.seeother("/game")
+
+class One(object):
+    def GET(self):
+        session.room = session.room.next
+        web.seeother("/game")
+
+class Not_One(object):
+    def GET(self):
+        session.room = map.DEATH
         web.seeother("/game")
 
 if __name__ == "__main__":
